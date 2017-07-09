@@ -1,4 +1,6 @@
+#1.1
 #一摞Python风格的纸牌
+#实现特殊方法__len__ 和 __getitem__
 import collections
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
@@ -15,4 +17,31 @@ class FrenchDeck:
 
     def __getitem__(self, position):
         return self._cards[position]
+
+
+#1.2
+#一个简单的二维向量类
+from math import hypot
+class Vector:
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return 'Vector(%r, %r)' % (self.x, self.y)
+
+    def __abs__(self):
+        return hypot(self.x, self.y)
+
+    def __bool__(self):
+        return bool(abs(self))
+
+    def __add__(self, other):
+        x = self.x + other.x
+        y = self.y + other.y
+        return Vector(x, y)
+
+    def __mul__(self, scalar):
+        return Vector(self.x * scalar, self.y * scalar)
 
